@@ -1,4 +1,4 @@
-require_relative './parser'
+require_relative './line_item_builder'
 
 class SalesTaxes
 
@@ -21,7 +21,7 @@ class SalesTaxes
   private
 
   def parse_file(file)
-    Parser.parse_file_and_return_data(file)
+    LineItemBuilder.new(file).return_formatted_data
   end
 
   def total_sales_taxes(input)

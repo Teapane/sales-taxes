@@ -1,15 +1,15 @@
 require 'tax_calculator'
+require 'line_item'
 
 describe TaxCalculator do
 
   describe 'calculate_sales' do
+
+    let(:line_item) {LineItem.new(price: 47.50, imported: true, type: :other)}
+
     it 'calculates sales tax given a shelf price and tax rate' do
 
-      expect(TaxCalculator.calculate_sales_tax(price: 47.50, rate: 15)).to eq(7.15)
-      expect(TaxCalculator.calculate_sales_tax(price: 14.99, rate: 10)).to eq(1.50)
-      expect(TaxCalculator.calculate_sales_tax(price: 10, rate: 5)).to eq(0.50)
-      expect(TaxCalculator.calculate_sales_tax(price: 11.25, rate: 5)).to eq(0.60)
-
+      expect(TaxCalculator.new(line_item).return_amount_with_tax).to eq(54.65)
 
     end
   end
