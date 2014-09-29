@@ -18,12 +18,18 @@ class LineItem
 
   def determine_tax_rate
     if type == :other
-      imported ? 15 : 10
-    elsif imported
-      5
+      check_imported_for_other
     else
-      0
+      check_imported_for_tax_free
     end
+  end
+
+  def check_imported_for_other
+    imported ? 15 : 10
+  end
+
+  def check_imported_for_tax_free
+    imported ? 5 : 0
   end
 
 end
