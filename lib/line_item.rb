@@ -10,13 +10,13 @@ class LineItem
     @imported = options[:imported]
     @type = options[:type]
     @description = options[:description]
-    @tax_rate = determine_tax_rate(options[:imported], options[:type])
+    @tax_rate = determine_tax_rate
     @price_with_tax = TaxCalculator.new(self).return_amount_with_tax
   end
 
   private
 
-  def determine_tax_rate(imported, type)
+  def determine_tax_rate
     if type == :other
       imported ? 15 : 10
     elsif imported
