@@ -11,7 +11,7 @@ class LineItem
     @type = options[:type]
     @description = options[:description]
     @tax_rate = determine_tax_rate
-    @price_with_tax = TaxCalculator.new(self).return_amount_with_tax
+    @price_with_tax = price_with_tax_from_calculator
   end
 
   private
@@ -34,6 +34,10 @@ class LineItem
 
   def check_imported_for_tax_free
     imported ? 5 : 0
+  end
+
+  def price_with_tax_from_calculator
+    TaxCalculator.new(self).return_amount_with_tax
   end
 
 end
