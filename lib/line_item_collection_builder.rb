@@ -1,6 +1,6 @@
 require_relative './line_item'
 
-class LineItemBuilder
+class LineItemCollectionBuilder
 
   def initialize(file)
     @file = file

@@ -1,6 +1,6 @@
-require 'line_item_builder'
+require 'line_item_collection_builder'
 
-describe LineItemBuilder do
+describe LineItemCollectionBuilder do
 
   before(:each) do
     @file = './spec/test_data/test_input1.txt'
@@ -8,8 +8,8 @@ describe LineItemBuilder do
 
   describe 'parse_file_and_return_data' do
 
-    let(:parsed_file) {LineItemBuilder.new(@file).return_formatted_data}
-    let (:line_item_sample) {LineItemBuilder.new(@file).return_formatted_data.first}
+    let(:parsed_file) {LineItemCollectionBuilder.new(@file).return_formatted_data}
+    let (:line_item_sample) {LineItemCollectionBuilder.new(@file).return_formatted_data.first}
 
     it 'reads file with appropriate input and returns array of line items' do
       expect(parsed_file).to be_instance_of(Array)
