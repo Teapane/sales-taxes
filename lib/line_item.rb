@@ -17,11 +17,15 @@ class LineItem
   private
 
   def determine_tax_rate
-    if type == :other
+    if type_is_other
       check_imported_for_other
     else
       check_imported_for_tax_free
     end
+  end
+
+  def type_is_other
+    type == :other
   end
 
   def check_imported_for_other
